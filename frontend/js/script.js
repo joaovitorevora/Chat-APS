@@ -43,4 +43,20 @@ const handleLogin = (event) => {
 
     
 }
+
+const sendMessage = (event) =>{
+    event.preventDefault()
+
+    const message = {
+        userID: user.id,
+        userName: user.name,
+        userColor: user.color,
+        content: chatInput.value
+    }
+
+    websocket.send(JSON.stringify(message))
+
+    chatInput.value = ""
+}
 loginForm.addEventListener("submit", handleLogin)
+chatForm.addEventListener("submit", sendMessage)
